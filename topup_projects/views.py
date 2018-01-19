@@ -6,7 +6,7 @@ from .models import Reload_country, Operator,Product,topup
 from  django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect
 from  django.contrib import auth
-import  requests
+# import  requests
 # Create your views here.
 
 # def user(request):
