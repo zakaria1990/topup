@@ -1,0 +1,110 @@
+.header {
+    width: 100%;
+    height: 100px;
+    background-color: #ccffff;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+.main_header h1 {
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    padding-top: 30px;
+}
+.main_header {
+    height: 100px;
+}
+.content_body {
+    width: 100%;
+    height: 470px;
+}
+.content_left {
+    width: 25%;
+    height: 470px;
+    display: inline-block;
+    background-color: #f5fffa;
+        float: left;
+}
+.content_details {
+    width: 75%;
+    display: inline-block;
+    height: 470px;
+    background-color: #f0f8ff;
+    float: left;
+}
+.Agent {
+    width: 100%;
+    height: 40px;
+}
+span.guest {
+    margin-top: 10px;
+    display: inline-block;
+    margin-left: 10px;
+        font-weight: bold;
+}
+.header_menu {
+    width: 100%;
+    height: 429px;
+}
+i.fa.fa-plus-square-o {
+    display: none;
+}
+.icon {
+    display: inline-block;
+    float: left;
+    margin-left: 9px;
+    width: 5%;
+    cursor: pointer;
+}
+.home {
+    display: inline-block;
+    float: left;
+    margin-left: 5px;
+        width: 86%;
+}
+.manu_li {
+    float: left;
+    width: 61%;
+    padding-left: 30px;
+        margin-top: 10px;
+}
+li.main_li {
+    list-style: none;
+}
+.main_li, .incon_img {
+    display: inline-block;
+}
+ul.li_ul {
+    width: 100%;
+    margin: 0;
+    padding-left: 25px;
+}
+img.incon_img {
+    margin-bottom: -4px;
+}
+li.main_li:hover {
+    text-decoration: underline;
+}
+li.main_li {
+    cursor: pointer;
+        padding-top: 1px;
+}
+.content_header {
+    width: 100%;
+    height: 30px;
+    background-color: #000;
+}
+span.content_home {
+    color: #ffffff;
+    text-decoration: underline #fff;
+    display: inline-block;
+    margin: 7px 0 0 4px;
+}
+.login {
+    width: 30%;
+    height: 110px;
+    background-color: gray;
+    margin: 5% 0 0 11%;
+}

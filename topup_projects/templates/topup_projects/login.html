@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $(".icon").click(function(){
+            $(".manu_li").slideToggle();
+        });
+    });
+    </script>
+
+    <script type="text/javascript">
+    function toggle_visibility(id) {
+       var e = document.getElementById(#mainus);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+
+</script>
+
+    <script src="https://use.fontawesome.com/40c018aa18.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'topup_projects/style.css'%}" type="text/css">
+  </head>
+  <body>
+    <div class="header">
+      <div class="main_header">
+      <h1>Prepaid Eload System</h1>
+    </div>
+
+      <div class="content_body">
+        <div class="content_left">
+        <div class="Agent">
+          <span class="guest">Agent :</span>
+          <span class="guest">guest</span>
+        </div>
+
+          <div class="header_menu">
+
+            <div class="icon">
+            <i class="fa fa-minus-square-o" aria-hidden="true" id="mainus"></i>
+              <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+            </div>
+
+            <div class="home">
+              <span class="H_home">
+                Home
+
+              </span>
+            </div>
+            <div class="manu_li">
+
+              <ul class="li_ul">
+              {% for reloadCountry in Reload_country %}
+
+
+
+              <li class="main_li">
+                 {%if reloadCountry.Image%}
+                <img src="{{reloadCountry.Image.url}}" class="incon_img" />
+                  {%endif%}
+
+
+                {{reloadCountry.Country_Name}}</li>
+
+              {%endfor%}
+
+              </ul>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+        <div class="content_details">
+
+          <div class="login">
+              <label class="login_text">Login</label>
+            <form method="post" action="" class="logForm">
+              {% csrf_token %}
+              <label class="user">MSISDN:</label>            <input type="text" name="user" class="mobile_no_user">
+              <label class="password">Password:</label>      <input type="password" name="password" class="password">
+
+              <button type="submit"name="submit" class="submit_login">login</button>
+
+
+
+            </form>
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+</div>
+
+
+
+
+  </body>
+</html>

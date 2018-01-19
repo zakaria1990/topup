@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+      <meta name="viewport" content="width=device-width">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
+      <script>
+      $(document).ready(function(){
+          $(".icon").click(function(){
+              $(".manu_li").slideToggle();
+          });
+      });
+      </script>
+
+
+	<script type="text/javascript">
+    $("select.product_op").change(function ()
+
+
+
+
+
+	function populate(s1,s2){
+	var s1 = document.getElementById(s1);
+	var s2 = document.getElementById(s2);
+	s2.innerHTML = "";
+	if(s1.value == "op.id"){
+		var optionArray = [];
+	} else if(s1.value == "Dodge"){
+		var optionArray = ["|","avenger|Avenger","challenger|Challenger","charger|Charger"];
+	} else if(s1.value == "Ford"){
+		var optionArray = ["|","mustang|Mustang","shelby|Shelby"];
+	}
+	for(var option in optionArray){
+		var pair = optionArray[option].split("|");
+		var newOption = document.createElement("option");
+		newOption.value = pair[0];
+		newOption.innerHTML = pair[1];
+		s2.options.add(newOption);
+	}
+}
+</script>
+
+
+    <script src="https://use.fontawesome.com/40c018aa18.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'topup_projects/style.css'%}" type="text/css">
+    <script src="topup_projects/java.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div class="main_header">
+      <h1>Prepaid Eload System</h1>
+    </div>
+
+      <div class="content_body">
+        <div class="content_left">
+        <div class="Agent">
+          <span class="guest">Agent :</span>
+          <span class="guest">guest</span>
+        </div>
+
+          <div class="header_menu">
+
+            <div class="icon">
+            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+              <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+            </div>
+
+            <div class="home">
+              <span class="H_home">
+                Home
+
+              </span>
+            </div>
+            <div class="manu_li">
+
+              <ul class="li_ul">
+              {% for reloadCountry in Reload_countrys %}
+
+
+
+              <li class="main_li">
+                 {%if reloadCountry.Image%}
+                <img src="{{reloadCountry.Image.url}}" class="incon_img" />
+                  {%endif%}
+                <a class="" href="/select_country/{{reloadCountry.id}}"> {{reloadCountry.Country_Name}}</a>
+
+              </li>
+
+              {%endfor%}
+
+              </ul>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+        <div class="content_details">
+          <div class="content_header">
+              <a href="/"><span class="content_home">Home:</span> </a>
+
+            <div class="con_hed_option">
+
+                <div class="header_search">
+                <a href=""><span>Search</span></a>
+           </div>
+
+           <div class="header_agent_topup">
+                <a href=""><span>ReportAgentTopup</span></a>
+           </div>
+
+              <div class="header_agent_Sales">
+                <a href=""><span>ReportAgentSales</span></a>
+           </div>
+
+              <div class="header_agent_changepass">
+                <a href=""><span>ChangePassword</span></a>
+           </div>
+
+              <div class="header_agent_logout">
+                <a href=""><span>Logout</span></a>
+           </div>
+
+            </div>
+
+
+          </div>
+
+<div class="content_class">
+    <form method="post" enctype="multipart/form-data" action="">{% csrf_token %}
+  <div class="reload">
+      <label class="reload_header">
+      Reload #
+      </label>
+
+      <label class="reload_header_id">
+          1
+      </label>
+
+  </div>
+
+  <div class="reload_type">
+
+    <label  class="product_type">
+      Type
+
+    </label>
+    <select name="oprator_data" class="product_op" id="select">
+
+      {%for oparetor in Reload_country%}
+      {% if forloop.first %}
+
+      {%for op in oparetor.operators.all%}
+      <option value="{{op.id}}" >{{op.operator_name}}</option>
+      {%endfor%}
+
+
+    {% endif %}
+
+
+      {%endfor%}
+
+
+    </select>
+
+
+  </div>
+
+  <div class="reload_amount_head">
+    <label class="amount">
+
+      Amount
+    </label>
+
+    <select class="product_val" name="product_data">
+
+       {%for product in products%}
+      <option value="{{product.id}}" >{{product.Product_Amount}}</option>
+
+      {%endfor%}
+    </select>
+
+  </div>
+
+    <div class="reload_mobail">
+    <label class="type_mobail">
+
+ Mobile
+    </label>
+
+<input type="text" class="mobail_input" name="mobile_data" required>
+
+
+
+
+  </div>
+
+    <div class="mobail_etc">
+
+        <label class="opition">9xxxxxxx</label>
+           <label class="opition">8xxxxxxx</label>
+    </div>
+
+    <div class="submit_class">
+
+        <button type="submit" class="submit" id="submit">Submit</button>
+
+    </div>
+
+</form>
+</div>
+
+          <div class="topup_projects_process">
+
+            <table class="complete_table">
+
+
+              {%for topups in topup%}
+              <tr>
+
+               <td>
+                {{topups.type.all}}
+               </td>
+               <td>{{topups.amount.all}}
+               </td>
+               <td>{{topups.mobile}}</td>
+               <td>{{topups.time}}</td>
+               <td>{{topups.status}}</td>
+
+           </tr>
+             {%endfor%}
+
+
+
+
+
+            </table>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+</div>
+
+
+
+
+  </body>
+</html>
